@@ -6,6 +6,7 @@ namespace Assets.Scripts
     public class PlayerController : MonoBehaviour
     {
         public float speed = 1.0f;
+        public float tilt = 4.0f;
         public Boundary boundary;
 
         private Rigidbody rb;
@@ -22,6 +23,7 @@ namespace Assets.Scripts
             var velocity = new Vector3(moveHorizontal, 0.0f, moveVertical);
             rb.velocity = speed*velocity;
             rb.position = boundary.Clamp(rb.position);
+            rb.rotation = Quaternion.Euler(0.0f, 0.0f, rb.velocity.x*-tilt);
         }
     }
 
