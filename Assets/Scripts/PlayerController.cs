@@ -37,7 +37,6 @@ namespace Assets.Scripts
                 vector.y,
                 Mathf.Clamp(vector.z, zMin, zMax)
                 );
-            Debug.Log(vector3);
             return vector3;
         }
     }
