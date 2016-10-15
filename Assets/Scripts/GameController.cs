@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public static GameController instance;
+
     public GameObject hazardPrefab;
     public Vector3 spawnValues;
     public int waveSize = 5;
@@ -32,6 +34,14 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         StartCoroutine(SpawnWaves());
     }
 }
