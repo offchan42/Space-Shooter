@@ -11,6 +11,15 @@ public class GameController : MonoBehaviour
     public float startDelay = 1.0f;
     public float hazardDelay = 0.5f;
     public float waveDelay = 3.0f;
+    public GUIText scoreText;
+
+    private int score;
+
+    public void AddScore(int addition)
+    {
+        score += addition;
+        UpdateScore();
+    }
 
     public void SpawnHazard()
     {
@@ -32,6 +41,11 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private void UpdateScore()
+    {
+        scoreText.text = "Score: " + score;
+    }
+
     private void Awake()
     {
         if (instance == null)
@@ -43,5 +57,7 @@ public class GameController : MonoBehaviour
             Destroy(gameObject);
         }
         StartCoroutine(SpawnWaves());
+        score = 0;
+        UpdateScore();
     }
 }

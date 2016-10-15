@@ -4,6 +4,7 @@ public class DestroyByContact : MonoBehaviour
 {
     public GameObject explosionPrefab;
     public GameObject playerExplosionPrefab;
+    public int scoreValue = 10;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,5 +19,6 @@ public class DestroyByContact : MonoBehaviour
         Instantiate(explosionPrefab, transform.position, transform.rotation);
         Destroy(other.gameObject);
         Destroy(gameObject);
+        GameController.instance.AddScore(scoreValue);
     }
 }
