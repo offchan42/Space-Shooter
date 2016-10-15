@@ -13,6 +13,7 @@ namespace Assets.Scripts
         public float fireDelay = 0.25f;
 
         private Rigidbody rb;
+        private AudioSource audioSource;
         private float nextFire;
 
         private void Update()
@@ -21,12 +22,14 @@ namespace Assets.Scripts
             {
                 Instantiate(shotPrefab, shotSpawn.position, shotSpawn.rotation);
                 nextFire = Time.time + fireDelay;
+                audioSource.Play();
             }
         }
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody>();
+            audioSource = GetComponent<AudioSource>();
         }
 
         private void FixedUpdate()
