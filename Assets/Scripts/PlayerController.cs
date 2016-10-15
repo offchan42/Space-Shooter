@@ -8,8 +8,18 @@ namespace Assets.Scripts
         public float speed = 1.0f;
         public float tilt = 4.0f;
         public Boundary boundary;
+        public GameObject shotPrefab;
+        public Transform shotSpawn;
 
         private Rigidbody rb;
+
+        private void Update()
+        {
+            if (Input.GetButton("Fire1"))
+            {
+                Instantiate(shotPrefab, shotSpawn.position, shotSpawn.rotation);
+            }
+        }
 
         private void Awake()
         {
