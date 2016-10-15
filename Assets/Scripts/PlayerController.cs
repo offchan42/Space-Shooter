@@ -10,14 +10,17 @@ namespace Assets.Scripts
         public Boundary boundary;
         public GameObject shotPrefab;
         public Transform shotSpawn;
+        public float fireDelay = 0.25f;
 
         private Rigidbody rb;
+        private float nextFire;
 
         private void Update()
         {
-            if (Input.GetButton("Fire1"))
+            if (Input.GetButton("Fire1") && Time.time > nextFire)
             {
                 Instantiate(shotPrefab, shotSpawn.position, shotSpawn.rotation);
+                nextFire = Time.time + fireDelay;
             }
         }
 
