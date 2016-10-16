@@ -35,8 +35,8 @@ public class GameController : MonoBehaviour
     public void SpawnHazard()
     {
         var spawnPos = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
-        var i = Random.Range(0, hazardPrefabs.Length);
-        var hazardPrefab = hazardPrefabs[i];
+        int i = Random.Range(0, hazardPrefabs.Length);
+        GameObject hazardPrefab = hazardPrefabs[i];
         Instantiate(hazardPrefab, spawnPos, Quaternion.identity);
     }
 
