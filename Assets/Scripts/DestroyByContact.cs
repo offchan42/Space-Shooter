@@ -8,7 +8,7 @@ public class DestroyByContact : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Boundary"))
+        if (other.CompareTag("Boundary") || other.CompareTag("Enemy"))
         {
             return;
         }
@@ -17,7 +17,10 @@ public class DestroyByContact : MonoBehaviour
             Instantiate(playerExplosionPrefab, other.transform.position, other.transform.rotation);
             GameController.instance.GameOver();
         }
-        Instantiate(explosionPrefab, transform.position, transform.rotation);
+        if (explosionPrefab != null)
+        {
+            Instantiate(explosionPrefab, transform.position, transform.rotation);
+        }
         Destroy(other.gameObject);
         Destroy(gameObject);
         GameController.instance.AddScore(scoreValue);
