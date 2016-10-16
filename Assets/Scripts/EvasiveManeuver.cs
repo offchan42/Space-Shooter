@@ -37,6 +37,8 @@ public class EvasiveManeuver : MonoBehaviour
                 yield return null;
                 accelerated += Time.deltaTime;
             }
+            velocity.x = maxSpeed;
+            rb.velocity = velocity;
             yield return new WaitForSeconds(moveTime - accelerated);
             velocity.x = 0.0f;
             rb.velocity = velocity;
