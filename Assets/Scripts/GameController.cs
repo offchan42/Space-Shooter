@@ -6,7 +6,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
-    public GameObject hazardPrefab;
+    public GameObject[] hazardPrefabs;
     public Vector3 spawnValues;
     public int waveSize = 5;
     public float startDelay = 1.0f;
@@ -35,6 +35,8 @@ public class GameController : MonoBehaviour
     public void SpawnHazard()
     {
         var spawnPos = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+        var i = Random.Range(0, hazardPrefabs.Length);
+        var hazardPrefab = hazardPrefabs[i];
         Instantiate(hazardPrefab, spawnPos, Quaternion.identity);
     }
 
